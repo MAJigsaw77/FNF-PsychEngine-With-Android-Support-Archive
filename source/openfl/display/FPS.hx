@@ -30,7 +30,7 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("_sans", 12, color);
+		defaultTextFormat = new TextFormat("VCR OSD Mono", 20, color);
 		text = "FPS: ";
 
 		cacheCount = 0;
@@ -68,15 +68,15 @@ class FPS extends TextField
 
 		text = "";
 
-		text += "FPS: " + currentFPS + "\n";
+		text += "Brzina Smeriravanja Slike: " + currentFPS + "\n";
 
 		var mem = System.totalMemory;
 		if (mem > peak)
 			peak = mem;
 
-		text += "MEM: " + getSizeLabel(System.totalMemory) + "\n";
+		text += "Memorija: " + getSizeLabel(System.totalMemory) + "\n";
 
-		text += "MEM peak: " + getSizeLabel(peak) + "\n";
+		text += "Ukupna Memorija: " + getSizeLabel(peak) + "\n";
 	}
 
 	final dataTexts = ["B", "KB", "MB", "GB", "TB", "PB"];
