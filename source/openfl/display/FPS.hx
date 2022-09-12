@@ -1,36 +1,20 @@
 package openfl.display;
 
-import haxe.Timer;
-import openfl.events.Event;
+import flixel.FlxG;
+import openfl.display.Shader;
+import openfl.filters.ShaderFilter;
+import openfl.system.System;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
-import flixel.math.FlxMath;
-#if gl_stats
-import openfl.display._internal.stats.Context3DStats;
-import openfl.display._internal.stats.DrawCallContext;
-#end
-#if flash
-import openfl.Lib;
-#end
 
-#if openfl
-import openfl.system.System;
-#end
-
-/**
-	The FPS class provides an easy-to-use monitor to display
-	the current frame rate of an OpenFL project
-**/
-#if !openfl_debug
-@:fileXml('tags="haxe,release"')
-@:noDebug
-#end
 class FPS extends TextField
 {
 	/**
 		The current frame rate, expressed using frames-per-second
 	**/
-	public var currentFPS(default, null):Int;
+	public var currentFPS(default, null):UInt;
+
+	var peak:UInt = 0;
 
 	@:noCompletion private var cacheCount:Int;
 	@:noCompletion private var currentTime:Float;
@@ -46,14 +30,15 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("_sans", 14, color);
-		autoSize = LEFT;
-		multiline = true;
+		defaultTextFormat = new TextFormat("_sans", 12, color);
 		text = "FPS: ";
 
 		cacheCount = 0;
 		currentTime = 0;
 		times = [];
+
+		autoSize = LEFT;
+		backgroundColor = 0;
 
 		#if flash
 		addEventListener(Event.ENTER_FRAME, function(e)
@@ -62,6 +47,8 @@ class FPS extends TextField
 			__enterFrame(time - currentTime);
 		});
 		#end
+
+		width = 350;
 	}
 
 	// Event Handlers
@@ -77,34 +64,38 @@ class FPS extends TextField
 		}
 
 		var currentCount = times.length;
-		currentFPS = Math.round((currentCount + cacheCount) / 2);
-		if (currentFPS > ClientPrefs.framerate) currentFPS = ClientPrefs.framerate;
+		currentFPS = Math.round((currentCount + cacheCount));
 
-		if (currentCount != cacheCount /*&& visible*/)
+		text = "";
+
+		text += "FPS: " + currentFPS + "\n";
+
+		var mem = System.totalMemory;
+		if (mem > peak)
+			peak = mem;
+
+		text += "MEM: " + getSizeLabel(System.totalMemory) + "\n";
+
+		text += "MEM peak: " + getSizeLabel(peak) + "\n";
+	}
+
+	final dataTexts = ["B", "KB", "MB", "GB", "TB", "PB"];
+
+	function getSizeLabel(num:UInt):String
+	{
+		var size:Float = num;
+		var data = 0;
+		while (size > 1024 && data < dataTexts.length - 1)
 		{
-			text = "FPS: " + currentFPS;
-			var memoryMegas:Float = 0;
-			
-			#if openfl
-			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			text += "\nMemory: " + memoryMegas + " MB";
-			#end
-
-			textColor = 0xFFFFFFFF;
-			if (memoryMegas > 3000 || currentFPS <= ClientPrefs.framerate / 2)
-			{
-				textColor = 0xFFFF0000;
-			}
-
-			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
-			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
-			text += "\nstageDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE);
-			text += "\nstage3DDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE3D);
-			#end
-
-			text += "\n";
+			data++;
+			size = size / 1024;
 		}
 
-		cacheCount = currentCount;
+		size = Math.round(size * 100) / 100;
+
+		if (data <= 2)
+			size = Math.round(size);
+
+		return size + " " + dataTexts[data];
 	}
 }
