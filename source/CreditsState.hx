@@ -112,9 +112,9 @@ class CreditsState extends MusicBeatState
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['SB Engine Posada'],
-			['StefanBETA2008',	'stefan',				'Oficijalni Kreator Za SB Engine \nI Koder Za Haxe.',	'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ', 	'444444'],
-			['MatejaMoriXs',				'mateja',			'Tim Za SB Engine. Ima 15 Godina :).',										'https://www.youtube.com/channel/UCjTi9Hfl1Eb5Bgk5gksmsbA', 	'444444'],
-			['MihajloMoriXs',	'mihajlo',			'Tim Za SB Engine. Ima 15 Godina :).',											'https://discord.gg/42bGcJG26x', 								'5165F6'],
+			['StefanBETA2008',	'stefan',				'Oficijalni Kreator Za SB Engine \nI Koder Za Haxe.',	'https://youtube.com/c/StefanBETATM', 	'FFA500'],
+			['MatejaMoriXs',				'mateja',			'Tim Za SB Engine. Ima 15 Godina :).',										'https://youtube.com/channel/UCCdvpSLgY1EuWIzvrHMNWqg', 	'FF0000'],
+			['MihajloMoriXs',	'mihajlo',			'Tim Za SB Engine. Ima 15 Godina :).',											'https://youtube.com/channel/UCfb1s-V35QbwsrAkwvrH5cA', 								'6a0dad'],
 			[''],
 			['Android Podrska'],
 			['Saw (M.A. Jigsaw)',	'jigsaw',				'Oficijalni Kreator Psych Engine-a \nSa Android Podrskom.',	'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ', 	'444444'],
@@ -184,7 +184,7 @@ class CreditsState extends MusicBeatState
 		
 
 		descText = new FlxText(50, FlxG.height + offsetThing - 25, 1180, "", 32);
-		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
+		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.BLACK, CENTER/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
 		descText.scrollFactor.set();
 		//descText.borderSize = 2.4;
 		add(descText);
