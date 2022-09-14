@@ -1189,7 +1189,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		var peWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " - " + storyDifficultyText + " | SB Engine Verzija:  " + MainMenuState.psychEngineVersion, 16);
+		var peWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " - " + Text + " | SB Engine Verzija:  " + MainMenuState.psychEngineVersion, 16);
 		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		peWatermark.scrollFactor.set();
 		add(peWatermark);
