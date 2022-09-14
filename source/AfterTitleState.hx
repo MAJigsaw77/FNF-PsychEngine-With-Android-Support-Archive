@@ -57,38 +57,38 @@ class AfterTitleState extends MusicBeatState // AfterTitleState By: Merphi
 		starBG.scrollFactor.set();
 		add(starBG);
 
-		sorry = new FlxText(0, 175, 0, "-Sorry-\n
-I'm Stefan, I don't own all the art and songs\n
-I just tried to recreate a mod that will be out soon\n
-All rights to songs, art, etc. belong to Team Funktastic\n
-I spent over 700 hours of my time recreating the Impostor V4\n
-I hope you understand and enjoy what i did\n", 0);
+		sorry = new FlxText(0, 175, 0, "-Obavestenje-\n
+Ja Sam Stefan, Kreator SB Engine-a.\n
+Samo Sam Hteo Da Napravim Bolje Engine Koji Mozete Da Uzmete Za Modiranje.\n
+Sve Radi Kako Treba: Pesme, Funkcije, Opcije I Kod.\n
+Radio Sam Na SB Engine Update 2.0.0 Skoro 4 Nedelje.\n
+Nadam Se Da Ste Me Rezumeli I Uzivaljte Na Update-u.\n", 0);
 		sorry.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 		sorry.borderSize = 2.0;
 		sorry.screenCenter(X);
 		sorry.antialiasing = true;
 		add(sorry);
 
-		changelog = new FlxText(0, 1005, 0, "-Changelog-\n
-1. Downscroll and Middlescroll now works\n
-2. Changed a bit Airship and Boiling Point stage\n
-3. Changed White, Gray and Black sprites\n
-4. Added Drip Black Sprite\n
-5. Changed Oversight Song\n
-6. Changed Ejected Song to newer\n
-7. Added 2 new songs to Airship Week - Influence and Death Blow\n
-8. Added 2 new songs to Gray Triple Trouble Week - Nyctophobia and Massacre\n
-9. Changed Blackout Song to newer\n
-10. Added 1 new song for pink - Heartbroken\n
-11. Added Achievements\n
-12. Changed Freeplay\n
-13. Changed Time bar\n
-14. Changed game icon\n
-15. Changed some icons\n
-16. Added 4 new bonus songs - Cleaning, Devil's Gambit, Bad Time and Despair\n
-17. Henry songs are no longer part of Airship Week\n
-18. Changed Double Kill Song\n
-(Not all changes are listed here)\n", 0);
+		changelog = new FlxText(0, 1005, 0, "-Promene-\n
+1. Dodat Je AfterTitleState.hx.\n
+2. Dodate Su Nove Ikonice Za CreditsState.hx.\n
+3. Dodata Je Animirana Pozadina Za CreditsState.hx. \n
+4. Vracena Je Stara Ikonica Za SB Engine.\n
+5. Dodat Je Novi FPS Stil.\n
+6. Dodat Je Novi Izgled Za MainMenuState.hx.\n
+7. Dodata Je Promena Za OptionsState.hx.\n
+8. Dodate Su Promene U Vezi ClientPrefs.hx\n
+9. Dodate Su Najnovije Promene Na PlayState.hx\n
+10. Rezolucija Za Android Je Popravljena.\n
+11. Obrisano Je Awards.\n
+12. Obrisano Je Mods.\n
+13. Obrisano Je Donate.\n
+14. Izbrisani Su Karakteri Za MainMenuState.hx.\n
+15. Dodata Je Nova Vremenska Traka.\n
+16. Dodata Je Optimizacija, Ali Jos Uvek Nemoze Na 2GB Rama.\n
+17. SUtil.hx Je Popravljen.\n
+18. Dodato Je Na CreditsState.hx Dugme Za Discord Server.\n
+(Vrlo Uskoro Jos Novih Promena)\n", 0);
 		changelog.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, CENTER);
 		changelog.borderSize = 2.0;
 		changelog.screenCenter(X);
