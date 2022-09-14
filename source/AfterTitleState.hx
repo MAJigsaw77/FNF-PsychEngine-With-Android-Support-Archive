@@ -45,56 +45,57 @@ class AfterTitleState extends MusicBeatState // AfterTitleState By: Merphi
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 
-		starFG = new FlxBackdrop(Paths.image('assets/images/menuDesat'), 1, 1, true, true);
+		starFG = new FlxBackdrop(Paths.image('početna/starFG'), 1, 1, true, true);
 		starFG.updateHitbox();
-		starFG.antialiasing = false;
+		starFG.antialiasing = true;
 		starFG.scrollFactor.set();
 		add(starFG);
 
-		starBG = new FlxBackdrop(Paths.image('assets/images/menuDesat'), 1, 1, true, true);
+		starBG = new FlxBackdrop(Paths.image('početna/starBG'), 1, 1, true, true);
 		starBG.updateHitbox();
-		starBG.antialiasing = false;
+		starBG.antialiasing = true;
 		starBG.scrollFactor.set();
 		add(starBG);
 
-		sorry = new FlxText(0, 175, 0, "-Obavestenje-\n
-Ja Sam Stefan, Ovo Je Samo Obavestenje Da Je Ovo Psych Engine, Ali Na Srpskoj Verziji.\n
-Hvala Vam Sto Ste Skinuli SB Engine 2.0.0 Verziju, Jako Predivno Od Vas.\n
-Ja Sam Potrosio Skoro 4 Nedelje Za SB Engine Da Napravim Ovaj Veliki Update Za Sve Vas.\n
-Nadam Se Da Ste Me Skapirali. Uzivaljte\n", 0);
+		sorry = new FlxText(0, 175, 0, "-Sorry-\n
+I'm Merphi, I don't own all the art and songs\n
+I just tried to recreate a mod that will be out soon\n
+All rights to songs, art, etc. belong to Team Funktastic\n
+I spent over 700 hours of my time recreating the Impostor V4\n
+I hope you understand and enjoy what i did\n", 0);
 		sorry.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 		sorry.borderSize = 2.0;
 		sorry.screenCenter(X);
 		sorry.antialiasing = true;
 		add(sorry);
 
-		changelog = new FlxText(0, 1005, 0, "-Promene:-\n
-1. Novi FPS Stil I Stil Fonta.\n
-2. Nove Promene Na PlayState.hx.\n
-3. Nove Promene Na MainMenuState.hx\n
-4. Izbrisan Je Stefan Decko (Nazalost :().\n
-5. Sada Imate Najlaksi Nacin Za Stefanov Discord Na CreditsState.hx.\n
-6. Male Promene U Vezi GameplayChangesState.hx.\n
-7. Loading Screen Je Dodat - Nece Biti Obrisan.\n
-8. Obrisano Je: Mods, Awards I Donate.\n
-9. Stara Ikonica Vracena Za SB Engine.\n
-10. Nova Vremenska Traka.\n
-11. Nove Funkcije.\n
-12. Potpuno Nova Podesavanja.\n
-13. MasterEditorMenu.hx Je Popravljen.\n
-14. Dodato Par Sitnica U Vezi MainMenuState.hx.\n
-15. Dodate Nove Ikonice Za Null Karaktera.\n
-16. Lag Fix Je Popravljen Za Android Port Na 6GB Rama Do 4GB Rama.\n
-17. Mod Podrska Radi I Bez ModsMenuState.hx.\n
-18. \n
-(Vrlo Uskoro Jos Novih Promena).\n", 0);
+		changelog = new FlxText(0, 1005, 0, "-Changelog-\n
+1. Downscroll and Middlescroll now works\n
+2. Changed a bit Airship and Boiling Point stage\n
+3. Changed White, Gray and Black sprites\n
+4. Added Drip Black Sprite\n
+5. Changed Oversight Song\n
+6. Changed Ejected Song to newer\n
+7. Added 2 new songs to Airship Week - Influence and Death Blow\n
+8. Added 2 new songs to Gray Triple Trouble Week - Nyctophobia and Massacre\n
+9. Changed Blackout Song to newer\n
+10. Added 1 new song for pink - Heartbroken\n
+11. Added Achievements\n
+12. Changed Freeplay\n
+13. Changed Time bar\n
+14. Changed game icon\n
+15. Changed some icons\n
+16. Added 4 new bonus songs - Cleaning, Devil's Gambit, Bad Time and Despair\n
+17. Henry songs are no longer part of Airship Week\n
+18. Changed Double Kill Song\n
+(Not all changes are listed here)\n", 0);
 		changelog.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, CENTER);
 		changelog.borderSize = 2.0;
 		changelog.screenCenter(X);
 		changelog.antialiasing = true;
 		add(changelog);
 
-		up = new FlxSprite(0, 0).loadGraphic(Paths.image('assets/images/Strelice_Gore'));
+		up = new FlxSprite(0, 0).loadGraphic(Paths.image('cool/sussy_up'));
 		up.antialiasing = false;
 		up.updateHitbox();
 		up.scrollFactor.set();
@@ -103,7 +104,7 @@ Nadam Se Da Ste Me Skapirali. Uzivaljte\n", 0);
 		up.alpha = 0;
 		add(up);
 
-		down = new FlxSprite(0, 0).loadGraphic(Paths.image('assets/images/Strelice_Dole'));
+		down = new FlxSprite(0, 0).loadGraphic(Paths.image('cool/sussy_down'));
 		down.antialiasing = false;
 		down.updateHitbox();
 		down.scrollFactor.set();
@@ -111,13 +112,21 @@ Nadam Se Da Ste Me Skapirali. Uzivaljte\n", 0);
 		down.antialiasing = true;
 		add(down);
 
-		sus = new FlxSprite(0, 0).loadGraphic(Paths.image('assets/images/Interesanto'));
+		sus = new FlxSprite(0, 0).loadGraphic(Paths.image('cool/sussy'));
 		sus.antialiasing = false;
 		sus.updateHitbox();
 		sus.scrollFactor.set();
 		sus.screenCenter();
 		sus.antialiasing = true;
 		add(sus);
+
+		explanation = new FlxSprite(0, 0).loadGraphic(Paths.image('cool/hi'));
+		explanation.antialiasing = false;
+		explanation.updateHitbox();
+		explanation.scrollFactor.set();
+		explanation.screenCenter();
+		explanation.antialiasing = true;
+		add(explanation);
 
 		#if android
 		addVirtualPad(UP_DOWN, A_B);
@@ -188,7 +197,7 @@ Nadam Se Da Ste Me Skapirali. Uzivaljte\n", 0);
 
 				if (controls.BACK)
 				{
-					CoolUtil.browserLoad('https://github.com/StefanBETA2008/SB-Engine');
+					CoolUtil.browserLoad('https://github.com/MerphiG/Impostor-V4-Fanmade');
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 				}
 
@@ -230,7 +239,7 @@ Nadam Se Da Ste Me Skapirali. Uzivaljte\n", 0);
 
 				if (controls.BACK)
 				{
-					CoolUtil.browserLoad('https://github.com/StefanBETA2008/SB-Engine');
+					CoolUtil.browserLoad('https://github.com/MerphiG/Impostor-V4-Fanmade');
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 				}
 
