@@ -45,20 +45,20 @@ class AfterTitleState extends MusicBeatState // AfterTitleState By: Merphi
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 
-		starFG = new FlxBackdrop(Paths.image('početna/starFG'), 1, 1, true, true);
+		starFG = new FlxBackdrop(Paths.image('menu/starFG'), 1, 1, true, true);
 		starFG.updateHitbox();
 		starFG.antialiasing = true;
 		starFG.scrollFactor.set();
 		add(starFG);
 
-		starBG = new FlxBackdrop(Paths.image('početna/starBG'), 1, 1, true, true);
+		starBG = new FlxBackdrop(Paths.image('menu/starBG'), 1, 1, true, true);
 		starBG.updateHitbox();
 		starBG.antialiasing = true;
 		starBG.scrollFactor.set();
 		add(starBG);
 
 		sorry = new FlxText(0, 175, 0, "-Sorry-\n
-I'm Merphi, I don't own all the art and songs\n
+I'm Stefan, I don't own all the art and songs\n
 I just tried to recreate a mod that will be out soon\n
 All rights to songs, art, etc. belong to Team Funktastic\n
 I spent over 700 hours of my time recreating the Impostor V4\n
