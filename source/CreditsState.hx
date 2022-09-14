@@ -187,7 +187,6 @@ class CreditsState extends MusicBeatState
 		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
 		descText.scrollFactor.set();
 		//descText.borderSize = 2.4;
-		descBox.sprTracker = descText;
 		add(descText);
 
 		bg.color = getCurrentBGColor();
@@ -212,7 +211,7 @@ class CreditsState extends MusicBeatState
 		}
 		
 		if (FlxG.keys.pressed.CONTROL #if android || virtualPad.buttonC.justPressed #end) {
-			CoolUtil.browserLoad('https://discord.gg/5vEHTRjNck');
+			CoolUtil.browserLoad('https://discord.gg/6pPmX8CzWQ');
 		}
 
 		if(!quitting)
@@ -331,8 +330,6 @@ class CreditsState extends MusicBeatState
 		if(moveTween != null) moveTween.cancel();
 		moveTween = FlxTween.tween(descText, {y : descText.y + 75}, 0.25, {ease: FlxEase.sineOut});
 
-		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(descText.height + 25));
-		descBox.updateHitbox();
 	}
 
 	#if MODS_ALLOWED
