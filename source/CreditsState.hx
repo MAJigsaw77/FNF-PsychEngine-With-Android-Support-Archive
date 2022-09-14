@@ -12,6 +12,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
+import flixel.addons.display.FlxBackdrop;
 import flixel.tweens.FlxEase;
 #if MODS_ALLOWED
 import sys.FileSystem;
@@ -29,11 +30,14 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 	private var creditsStuff:Array<Array<String>> = [];
 
+	var clickfreddy:Int = 0;
 	var bg:FlxSprite;
+	var bg2:FlxSprite;
+	var chess:FlxBackdrop;
+	var overlay:FlxSprite;
 	var descText:FlxText;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
-	var descBox:AttachedSprite;
 
 	var offsetThing:Float = -75;
 
@@ -44,13 +48,39 @@ class CreditsState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
-		persistentUpdate = true;
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat2'));
 		add(bg);
-		bg.screenCenter();
+
+		bg2 = new FlxSprite().loadGraphic(Paths.image('kredit'));
+		add(bg2);
+		bg2.alpha = 0.5;
+		
+
+		//chess
+		chess = new FlxBackdrop(Paths.image('apbg'), 0, 0, true, false);
+		chess.y -= 80;
+		add(chess);
+		
+		chess.offset.x -= 0;
+		chess.offset.y += 0;
+		chess.velocity.x = 20;
+
+		overlay = new FlxSprite().loadGraphic(Paths.image('postavka_za_kredit'));
+		add(overlay);
+		overlay.alpha = 1;
 		
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
+
+		#if android
+			var versionShit:FlxText = new FlxText(FlxG.width * 0.7, FlxG.height - 24, 0, "Pritisni C Za Ofiicijalni Discord Server", 12);
+			#else
+			var versionShit:FlxText = new FlxText(FlxG.width * 0.7, FlxG.height - 24, 0, "Pritisni CTRL Za Oficijalni Discord Server", 12);
+		#end
+
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
 
 		#if MODS_ALLOWED
 		var path:String = SUtil.getPath() + 'modsList.txt';
@@ -81,33 +111,37 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
-			['Android Support'],
-			['Saw (M.A. Jigsaw)',	'jigsaw',				'Main Programmer of Psych Engine\nWith Android Support',	'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ', 	'444444'],
-			['Goldie',				'goldie',			'Virtual Pad Artist',										'https://www.youtube.com/channel/UCjTi9Hfl1Eb5Bgk5gksmsbA', 	'444444'],
-			['Join our Discord!',	'discord',			'If you dare...',											'https://discord.gg/42bGcJG26x', 								'5165F6'],
+			['SB Engine Posada'],
+			['StefanBETA2008',	'stefan',				'Oficijalni Kreator Za SB Engine \nI Koder Za Haxe.',	'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ', 	'444444'],
+			['MatejaMoriXs',				'mateja',			'Tim Za SB Engine. Ima 15 Godina :).',										'https://www.youtube.com/channel/UCjTi9Hfl1Eb5Bgk5gksmsbA', 	'444444'],
+			['MihajloMoriXs',	'mihajlo',			'Tim Za SB Engine. Ima 15 Godina :).',											'https://discord.gg/42bGcJG26x', 								'5165F6'],
 			[''],
-			['Psych Engine Team'],
-			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
-			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
-			['shubs',				'shubs',			'Additional Programmer of Psych Engine',						'https://twitter.com/yoshubs',			'5E99DF'],
+			['Android Podrska'],
+			['Saw (M.A. Jigsaw)',	'jigsaw',				'Oficijalni Kreator Psych Engine-a \nSa Android Podrskom.',	'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ', 	'444444'],
+			['Goldie',				'goldie',			'Umetnik Za Virtualna Dugmad I Hitboks.',										'https://www.youtube.com/channel/UCjTi9Hfl1Eb5Bgk5gksmsbA', 	'444444'],
 			[''],
-			['Former Engine Members'],
-			['bb-panzu',			'bb',				'Ex-Programmer of Psych Engine',								'https://twitter.com/bbsub3',			'3E813A'],
+			['Psych Engine Tim'],
+			['Shadow Mario',		'shadowmario',		'Oficijalni Kreator Psych Engine-a.',								'https://twitter.com/Shadow_Mario_',	'444444'],
+			['RiverOaken',			'river',			'Oficijalni Umetnik I Animator Za Psych Engine.',							'https://twitter.com/RiverOaken',		'B42F71'],
+			['shubs',				'shubs',			'Dodatni Programer Za Psych Engine.',						'https://twitter.com/yoshubs',			'5E99DF'],
 			[''],
-			['Engine Contributors'],
-			['iFlicky',				'flicky',			'Composer of Psync and Tea Time\nMade the Dialogue Sounds',		'https://twitter.com/flicky_i',			'9E29CF'],
-			['SqirraRNG',			'sqirra',			'Crash Handler and Base code for\nChart Editor\'s Waveform',	'https://twitter.com/gedehari',			'E1843A'],
-			['PolybiusProxy',		'proxy',			'.MP4 Video Loader Library (hxCodec)',							'https://twitter.com/polybiusproxy',	'DCD294'],
-			['KadeDev',				'kade',				'Fixed some cool stuff on Chart Editor\nand other PRs',			'https://twitter.com/kade0912',			'64A250'],
+			['Former Engine Member'],
+			['bb-panzu',			'bb',				'Eks-Programer Za Psych Engine.',								'https://twitter.com/bbsub3',			'3E813A'],
+			[''],
+			['Engine Kompozitori'],
+			['iFlicky',				'flicky',			'Kompozitori Za Psync and Tea Time\nNapravio Dijalog Zvukove.',		'https://twitter.com/flicky_i',			'9E29CF'],
+			['SqirraRNG',			'sqirra',			'Crash Handler I Obican Koder Za\nEditor Grafikona\'s Waveform.',	'https://twitter.com/gedehari',			'E1843A'],
+			['PolybiusProxy',		'proxy',			'.MP4 Video Ucitavac Biblioteke (hxCodec).',							'https://twitter.com/polybiusproxy',	'DCD294'],
+			['KadeDev',				'kade',				'Popravio Dosta Broj Cool Stvari\nI Tako Dalje.',			'https://twitter.com/kade0912',			'64A250'],
 			['Keoiki',				'keoiki',			'Note Splash Animations',										'https://twitter.com/Keoiki_',			'D2D2D2'],
 			['Nebula the Zorua',	'nebula',			'LUA JIT Fork and some Lua reworks',							'https://twitter.com/Nebula_Zorua',		'7D40B2'],
 			['Smokey',				'smokey',			'Sprite Atlas Support',											'https://twitter.com/Smokey_5_',		'483D92'],
 			[''],
-			["Funkin' Crew"],
-			['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",							'https://twitter.com/ninja_muffin99',	'CF2D2D'],
-			['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",								'https://twitter.com/PhantomArcade3K',	'FADC45'],
-			['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",								'https://twitter.com/evilsk8r',			'5ABD4B'],
-			['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",								'https://twitter.com/kawaisprite',		'378FC7']
+			["Funkin' Pozada"],
+			['ninjamuffin99',		'ninjamuffin99',	"Oficijalni Kreator Za Friday Night Funkin.'",							'https://twitter.com/ninja_muffin99',	'CF2D2D'],
+			['PhantomArcade',		'phantomarcade',	"Oficijalni Animator Za Friday Night Funkin.'",								'https://twitter.com/PhantomArcade3K',	'FADC45'],
+			['evilsk8r',			'evilsk8r',			"Oficijalni Umetnik Za Friday Night Funkin.'",								'https://twitter.com/evilsk8r',			'5ABD4B'],
+			['kawaisprite',			'kawaisprite',		"Oficijalni Kompozitor Za Friday Night Funkin.'",								'https://twitter.com/kawaisprite',		'378FC7']
 		];
 		
 		for(i in pisspoop){
@@ -148,13 +182,6 @@ class CreditsState extends MusicBeatState
 			}
 		}
 		
-		descBox = new AttachedSprite();
-		descBox.makeGraphic(1, 1, FlxColor.BLACK);
-		descBox.xAdd = -10;
-		descBox.yAdd = -10;
-		descBox.alphaMult = 0.6;
-		descBox.alpha = 0.6;
-		add(descBox);
 
 		descText = new FlxText(50, FlxG.height + offsetThing - 25, 1180, "", 32);
 		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
@@ -169,7 +196,7 @@ class CreditsState extends MusicBeatState
 		changeSelection();
 
 		#if android
-		addVirtualPad(UP_DOWN, A_B);
+		addVirtualPad(UP_DOWN, A_B_C);
 		#end
 
 		super.create();
@@ -182,6 +209,10 @@ class CreditsState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		}
+		
+		if (FlxG.keys.pressed.CONTROL #if android || virtualPad.buttonC.justPressed #end) {
+			CoolUtil.browserLoad('https://discord.gg/5vEHTRjNck');
 		}
 
 		if(!quitting)
