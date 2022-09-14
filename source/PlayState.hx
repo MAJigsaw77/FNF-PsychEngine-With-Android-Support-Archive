@@ -59,7 +59,6 @@ import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
-import MainMenuState;
 
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
@@ -1189,11 +1188,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		var peWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + | SB Engine Verzija:  " + MainMenuState.psychEngineVersion, 16);
-		peWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
-		peWatermark.scrollFactor.set();
-		add(peWatermark);
-
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "ROBOTSKA MEHANIKA", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
@@ -1212,7 +1206,6 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-                peWatermark.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
