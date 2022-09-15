@@ -7,6 +7,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -94,6 +95,12 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 		
+                var bgScroll:FlxBackdrop = new FlxBackdrop(Paths.image('animirana_pozadina'), 5, 5, true, true, -33, -32);
+		bgScroll.scrollFactor.set();
+		bgScroll.screenCenter();
+		bgScroll.velocity.set(50, 50);
+		bgScroll.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bgScroll);
 		// magenta.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
