@@ -8,12 +8,15 @@ import flixel.util.FlxColor;
 import flixel.effects.FlxFlicker;
 import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
 class FlashingState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
+
+	var blackScreen:FlxSprite;
 
 	var warnText:FlxText;
 	override function create()
