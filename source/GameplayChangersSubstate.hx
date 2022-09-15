@@ -74,7 +74,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.displayFormat = '%vX';
 		optionsArray.push(option);
 
-		var option:GameplayOption = new GameplayOption('Mnozilac Gubljenja Srca'', 'healthloss', 'float', 1);
+		var option:GameplayOption = new GameplayOption('Mnozilac Gubljenja Srca', 'healthloss', 'float', 1);
 		option.scrollSpeed = 2.5;
 		option.minValue = 0.5;
 		option.maxValue = 5;
