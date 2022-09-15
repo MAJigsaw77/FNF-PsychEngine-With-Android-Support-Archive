@@ -66,7 +66,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.displayFormat = '%vX';
 		optionsArray.push(option);*/
 
-		var option:GameplayOption = new GameplayOption('Health Gain Multiplier', 'healthgain', 'float', 1);
+		var option:GameplayOption = new GameplayOption('Mnozilac Davanja Srca', 'healthgain', 'float', 1);
 		option.scrollSpeed = 2.5;
 		option.minValue = 0;
 		option.maxValue = 5;
@@ -74,7 +74,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.displayFormat = '%vX';
 		optionsArray.push(option);
 
-		var option:GameplayOption = new GameplayOption('Health Loss Multiplier', 'healthloss', 'float', 1);
+		var option:GameplayOption = new GameplayOption('Mnozilac Gubljenja Srca'', 'healthloss', 'float', 1);
 		option.scrollSpeed = 2.5;
 		option.minValue = 0.5;
 		option.maxValue = 5;
@@ -82,13 +82,13 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.displayFormat = '%vX';
 		optionsArray.push(option);
 
-		var option:GameplayOption = new GameplayOption('Instakill on Miss', 'instakill', 'bool', false);
+		var option:GameplayOption = new GameplayOption('Umiranje Iz Prve Na Gresku', 'instakill', 'bool', false);
 		optionsArray.push(option);
 
-		var option:GameplayOption = new GameplayOption('Practice Mode', 'practice', 'bool', false);
+		var option:GameplayOption = new GameplayOption('Praksa Mod', 'practice', 'bool', false);
 		optionsArray.push(option);
 
-		var option:GameplayOption = new GameplayOption('Botplay', 'botplay', 'bool', false);
+		var option:GameplayOption = new GameplayOption('Robotska Mehanika', 'botplay', 'bool', false);
 		optionsArray.push(option);
 	}
 

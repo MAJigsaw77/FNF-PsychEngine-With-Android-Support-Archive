@@ -20,7 +20,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty' #if android, 'Chart Editor' #end, 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Nastavi', 'Pokreni Ponovo', 'Promeni Tezinu' #if android, 'Editor Grafikona' #end, 'Izadji Na Pocetnu'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
@@ -36,21 +36,21 @@ class PauseSubState extends MusicBeatSubstate
 	public function new(x:Float, y:Float)
 	{
 		super();
-		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
+		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Promeni Tezinu'); //No need to change difficulty if there is only one!
 
 		if(PlayState.chartingMode)
 		{
-			menuItemsOG.insert(2, 'Leave Charting Mode');
+			menuItemsOG.insert(2, 'Izadji Iz Editora');
 			
 			var num:Int = 0;
 			if(!PlayState.instance.startingSong)
 			{
 				num = 1;
-				menuItemsOG.insert(3, 'Skip Time');
+				menuItemsOG.insert(3, 'Preskoci Vreme');
 			}
-			menuItemsOG.insert(3 + num, 'End Song');
-			menuItemsOG.insert(4 + num, 'Toggle Practice Mode');
-			menuItemsOG.insert(5 + num, 'Toggle Botplay');
+			menuItemsOG.insert(3 + num, 'Zavrsi Pesmu');
+			menuItemsOG.insert(4 + num, 'Ukljuci Praksa Mod');
+			menuItemsOG.insert(5 + num, 'Ukljuci Robotsku Mehaniku');
 		}
 		menuItems = menuItemsOG;
 
@@ -58,7 +58,7 @@ class PauseSubState extends MusicBeatSubstate
 			var diff:String = '' + CoolUtil.difficulties[i];
 			difficultyChoices.push(diff);
 		}
-		difficultyChoices.push('BACK');
+		difficultyChoices.push('NAZAD');
 
 		pauseMusic = new FlxSound();
 		if(songName != null) {
@@ -91,13 +91,13 @@ class PauseSubState extends MusicBeatSubstate
 		add(levelDifficulty);
 
 		var blueballedTxt:FlxText = new FlxText(20, 15 + 64, 0, "", 32);
-		blueballedTxt.text = "Blueballed: " + PlayState.deathCounter;
+		blueballedTxt.text = "Broj Umiranja: " + PlayState.deathCounter;
 		blueballedTxt.scrollFactor.set();
 		blueballedTxt.setFormat(Paths.font('vcr.ttf'), 32);
 		blueballedTxt.updateHitbox();
 		add(blueballedTxt);
 
-		practiceText = new FlxText(20, 15 + 101, 0, "PRACTICE MODE", 32);
+		practiceText = new FlxText(20, 15 + 101, 0, "PRAKSA MOD", 32);
 		practiceText.scrollFactor.set();
 		practiceText.setFormat(Paths.font('vcr.ttf'), 32);
 		practiceText.x = FlxG.width - (practiceText.width + 20);
@@ -105,7 +105,7 @@ class PauseSubState extends MusicBeatSubstate
 		practiceText.visible = PlayState.instance.practiceMode;
 		add(practiceText);
 
-		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, "CHARTING MODE", 32);
+		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, "MOD EDITORA", 32);
 		chartingText.scrollFactor.set();
 		chartingText.setFormat(Paths.font('vcr.ttf'), 32);
 		chartingText.x = FlxG.width - (chartingText.width + 20);
@@ -173,7 +173,7 @@ class PauseSubState extends MusicBeatSubstate
 		var daSelected:String = menuItems[curSelected];
 		switch (daSelected)
 		{
-			case 'Skip Time':
+			case 'Preskoci Vreme':
 				if (controls.UI_LEFT_P)
 				{
 					FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
@@ -223,22 +223,22 @@ class PauseSubState extends MusicBeatSubstate
 
 			switch (daSelected)
 			{
-				case "Resume":
+				case "Nastavi":
 					close();
-				case 'Change Difficulty':
+				case 'Promei Tezinu':
 					menuItems = difficultyChoices;
 					deleteSkipTimeText();
 					regenMenu();
-				case 'Toggle Practice Mode':
+				case 'Ukljuci Praksa Mod':
 					PlayState.instance.practiceMode = !PlayState.instance.practiceMode;
 					PlayState.changedDifficulty = true;
 					practiceText.visible = PlayState.instance.practiceMode;
-				case "Restart Song":
+				case "Pokreni Ponovo":
 					restartSong();
-				case "Leave Charting Mode":
+				case "Izadji Iz Editora":
 					restartSong();
 					PlayState.chartingMode = false;
-				case 'Skip Time':
+				case 'Preskoci Vreme':
 					if(curTime < Conductor.songPosition)
 					{
 						PlayState.startOnTime = curTime;
@@ -253,19 +253,19 @@ class PauseSubState extends MusicBeatSubstate
 						}
 						close();
 					}
-				case "End Song":
+				case "Zavrsi Pesmu":
 					close();
 					PlayState.instance.finishSong(true);
-				case 'Toggle Botplay':
+				case 'Ukljuci Robotsku Mehaniku':
 					PlayState.instance.cpuControlled = !PlayState.instance.cpuControlled;
 					PlayState.changedDifficulty = true;
 					PlayState.instance.botplayTxt.visible = PlayState.instance.cpuControlled;
 					PlayState.instance.botplayTxt.alpha = 1;
 					PlayState.instance.botplaySine = 0;
-				case 'Chart Editor':
+				case 'Editor Grafikona':
 					MusicBeatState.switchState(new editors.ChartingState());
 					PlayState.chartingMode = true;
-				case "Exit to menu":
+				case "Izadji Na Pocetnu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
 
@@ -368,7 +368,7 @@ class PauseSubState extends MusicBeatSubstate
 			item.targetY = i;
 			grpMenuShit.add(item);
 
-			if(menuItems[i] == 'Skip Time')
+			if(menuItems[i] == 'Preskoci Vreme')
 			{
 				skipTimeText = new FlxText(0, 0, 0, '', 64);
 				skipTimeText.setFormat(Paths.font("vcr.ttf"), 64, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

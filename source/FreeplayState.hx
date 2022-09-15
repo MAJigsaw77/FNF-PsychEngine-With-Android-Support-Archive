@@ -194,23 +194,23 @@ class FreeplayState extends MusicBeatState
 
 		#if PRELOAD_ALL
 			#if android
-			var leText:String = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
+			var leText:String = "Pritisni X Da Podslusas Pesmu / Pritisni C Da Otvoris Opcije Za Lakse Igranje / Pritisni Y Da Podesis Ponovo Rezultat I Koncentricnost.";
 			var size:Int = 16;
 			#else
-			var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
+			var leText:String = "Pritisni SPACE Da Podslusas Pesmu / Pritisni CTRL Da Otvoris Opcije Za Lakse Igranje / Pritisni RESET Da Podesis Ponovo Rezultat I Koncentricnost.";
 			var size:Int = 16;
 			#end
 		#else
 			#if android
-			var leText:String = "Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
+			var leText:String = "Pritisni C Da Otvoris Opcije Za Lakse Igranje / Pritisni Y Da Podesis Ponovo Rezultat I Koncentricnost.";
 			var size:Int = 18;
 			#else
-			var leText:String = "Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
+			var leText:String = "Pritisni CTRL Da Otvoris Opcije Za Lakse Igranje / Pritisni RESET Da Podesis Ponovo Rezultat I Koncentricnost.";
 			var size:Int = 18;
 			#end
 		#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
-		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
+		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, CENTER);
 		text.scrollFactor.set();
 		add(text);
 
@@ -281,7 +281,7 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+		scoreText.text = '''NAJBOLJI REZULTAT': ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 
 		var upP = controls.UI_UP_P;
