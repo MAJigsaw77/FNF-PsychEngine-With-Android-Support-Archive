@@ -59,7 +59,7 @@ class AfterTitleState extends MusicBeatState // AfterTitleState By: Merphi
 
 		sorry = new FlxText(0, 175, 0, "-Obavestenje-\n
 Ja Sam Stefan, Kreator SB Engine-a.\n
-Samo Sam Hteo Da Napravim Bolje Engine Koji Mozete Da Uzmete Za Modiranje.\n
+Samo Sam Hteo Da Napravim Bolje Engine.\n
 Sve Radi Kako Treba: Pesme, Funkcije, Opcije I Kod.\n
 Radio Sam Na SB Engine Update 2.0.0 Skoro 4 Nedelje.\n
 Nadam Se Da Ste Me Rezumeli I Uzivaljte Na Update-u.\n", 0);
@@ -197,7 +197,7 @@ Nadam Se Da Ste Me Rezumeli I Uzivaljte Na Update-u.\n", 0);
 
 				if (controls.BACK)
 				{
-					CoolUtil.browserLoad('https://github.com/MerphiG/Impostor-V4-Fanmade');
+					CoolUtil.browserLoad('https://github.com/StefanBETA2008/SB-Engine');
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 				}
 
@@ -239,7 +239,7 @@ Nadam Se Da Ste Me Rezumeli I Uzivaljte Na Update-u.\n", 0);
 
 				if (controls.BACK)
 				{
-					CoolUtil.browserLoad('https://github.com/MerphiG/Impostor-V4-Fanmade');
+					CoolUtil.browserLoad('https://github.com/StefanBETA2008/SB-Engine');
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 				}
 
