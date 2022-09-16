@@ -29,39 +29,39 @@ using StringTools;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
+	var options:Array<String> = ['Boje Za Strelice', 'Kontrole', 'Podesi Kombo I Sadrzaj', 'Grafika', 'Vizulacija I KI', 'Igranje'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
 
 	function openSelectedSubstate(label:String) {
 		switch(label) {
-			case 'Note Colors':
+			case 'Boje Za Strelice':
 				#if android
 				removeVirtualPad();
 				#end
 				openSubState(new options.NotesSubState());
-			case 'Controls':
+			case 'Kontrole':
 				#if android
 				removeVirtualPad();
 				#end
 				openSubState(new options.ControlsSubState());
-			case 'Graphics':
+			case 'Grafika':
 				#if android
 				removeVirtualPad();
 				#end
 				openSubState(new options.GraphicsSettingsSubState());
-			case 'Visuals and UI':
+			case 'Vizulacija I KI':
 				#if android
 				removeVirtualPad();
 				#end
 				openSubState(new options.VisualsUISubState());
-			case 'Gameplay':
+			case 'Igranje':
 				#if android
 				removeVirtualPad();
 				#end
 				openSubState(new options.GameplaySettingsSubState());
-			case 'Adjust Delay and Combo':
+			case 'Podesi Kombo I Sadrzaj':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
 		}
 	}
@@ -99,7 +99,7 @@ class OptionsState extends MusicBeatState
 		add(selectorRight);
 
 		#if android
-		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press C to customize your android controls', 16);
+		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Pritisni C Da Otvoris Opcije Za Android Kontrole.', 16);
 		tipText.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tipText.borderSize = 2.4;
 		tipText.scrollFactor.set();

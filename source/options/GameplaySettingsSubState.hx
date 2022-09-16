@@ -34,54 +34,54 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 {
 	public function new()
 	{
-		title = 'Gameplay Settings';
+		title = 'Opcije Za Igranje';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('Controller Mode',
-			'Check this if you want to play with\na controller instead of using your Keyboard.',
+		var option:Option = new Option('Mod Kontrolera',
+			'Ocekuj Ovu Opciju Ako Si\nZainteresovan Da Uzmes Svoju Tastaturu.',
 			'controllerMode',
 			'bool',
 			#if android true #else false #end);
 		addOption(option);
 
 		//I'd suggest using "Downscroll" as an example for making your own option since it is the simplest here
-		var option:Option = new Option('Downscroll', //Name
-			'If checked, notes go Down instead of Up, simple enough.', //Description
+		var option:Option = new Option('Strelice-Dole', //Name
+			'Ako Je Ocekivano, Imas Strelice Dole.', //Description
 			'downScroll', //Save data variable name
 			'bool', //Variable type
 			false); //Default value
 		addOption(option);
 
-		var option:Option = new Option('Middlescroll',
-			'If checked, your notes get centered.',
+		var option:Option = new Option('Strelice U Sredini',
+			'Ako Je Ocekivano, Tvoje Strelice Ce Biti U Sredini.',
 			'middleScroll',
 			'bool',
 			false);
 		addOption(option);
 
-		var option:Option = new Option('Opponent Notes',
-			'If unchecked, opponent notes get hidden.',
+		var option:Option = new Option('Protivnicke Strelice',
+			'Ako Je Neocekivano, Protivnik Nece Imati Strelice Ako Imas Ukljucenu Opciju "Strelice U Sredini".',
 			'opponentStrums',
 			'bool',
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Ghost Tapping',
-			"If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.",
+		var option:Option = new Option('Duh Stiskanja',
+			"Ako Je Ocekivano, Neces Da Imas Nijednu Gresku\nAko Nemas Nijednu Strelicu.",
 			'ghostTapping',
 			'bool',
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Disable Reset Button',
-			"If checked, pressing Reset won't do anything.",
+		var option:Option = new Option('Iskljuci RESET Dugme',
+			"Ako Je Ocekivano, Pritiskanjem Dugmeta RESET Nece Nista Uraditi.\n{Ova Opcija Je Samo Za Windows, Mac I Linux Podrsku.}",
 			'noReset',
 			'bool',
 			false);
 		addOption(option);
 
 		var option:Option = new Option('Hitsound Volume',
-			'Funny notes does \"Tick!\" when you hit them."',
+			'Zabavne Strelice Urade \"Tick!\" Ako Ih Pritisnes."',
 			'hitsoundVolume',
 			'percent',
 			0);
@@ -93,8 +93,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.decimals = 1;
 		option.onChange = onChangeHitsoundVolume;
 
-		var option:Option = new Option('Rating Offset',
-			'Changes how late/early you have to hit for a "Sick!"\nHigher values mean you have to hit later.',
+		var option:Option = new Option('Sadrzaj Ocene',
+			'Promeni Koliko Kasno/Pre Zelis Da Stiskas  "BOLESNO!".',
 			'ratingOffset',
 			'int',
 			0);
@@ -104,8 +104,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 30;
 		addOption(option);
 
-		var option:Option = new Option('Sick! Hit Window',
-			'Changes the amount of time you have\nfor hitting a "Sick!" in milliseconds.',
+		var option:Option = new Option('Stiskanje BOLESNO!',
+			'Promeni Koliko Hoces Da Bude\nZa Stiskanje "BOLESNO!" U Milisekundima.',
 			'sickWindow',
 			'int',
 			45);
@@ -115,8 +115,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 45;
 		addOption(option);
 
-		var option:Option = new Option('Good Hit Window',
-			'Changes the amount of time you have\nfor hitting a "Good" in milliseconds.',
+		var option:Option = new Option('Stiskanje ODLIČNO',
+			'Promeni Koliko Hoces Da Bude\nZa Stiskanje "ODLICNO" U Milisekundima.',
 			'goodWindow',
 			'int',
 			90);
@@ -126,8 +126,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 90;
 		addOption(option);
 
-		var option:Option = new Option('Bad Hit Window',
-			'Changes the amount of time you have\nfor hitting a "Bad" in milliseconds.',
+		var option:Option = new Option('Stiskanje LOSE',
+			'Promeni Koliko Hoces Da Bude\nZa Stiskanje "LOSE" U Milisekundima.',
 			'badWindow',
 			'int',
 			135);
@@ -137,8 +137,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 135;
 		addOption(option);
 
-		var option:Option = new Option('Safe Frames',
-			'Changes how many frames you have for\nhitting a note earlier or late.',
+		var option:Option = new Option('Bezbedno Stiskanje',
+			'Menja Koliko Mozes Da\nStiskas Strelice Pre Ili Posle.',
 			'safeFrames',
 			'float',
 			10);
@@ -149,8 +149,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		#if android
-		var option:Option = new Option('GameOver Vibration',
-			'If unchecked, will make the game to vibrate when you die.',
+		var option:Option = new Option('KrajIgre Vibracija',
+			'Ako Je Ocekivano, SB Engine Ce Da Vibrira Kada Umres.\n{Ova Opcija Je Samo Za Android Podrsku}.',
 			'vibration',
 			'bool',
 			false);
@@ -171,7 +171,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 	{
 		if(ClientPrefs.vibration)
 		{
-			Hardware.vibrate(500);
+			Hardware.vibrate(1000);
 		}
 	}
 	#end

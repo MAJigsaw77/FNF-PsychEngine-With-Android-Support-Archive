@@ -36,30 +36,30 @@ class ControlsSubState extends MusicBeatSubstate {
 
 	var optionShit:Array<Dynamic> = [
 		['NOTES'],
-		['Left', 'note_left'],
-		['Down', 'note_down'],
-		['Up', 'note_up'],
-		['Right', 'note_right'],
+		['Levo', 'note_left'],
+		['Dole', 'note_down'],
+		['Gore', 'note_up'],
+		['Desno', 'note_right'],
 		[''],
-		['UI'],
-		['Left', 'ui_left'],
-		['Down', 'ui_down'],
-		['Up', 'ui_up'],
-		['Right', 'ui_right'],
+		['KI'],
+		['Levo', 'ui_left'],
+		['Dole', 'ui_down'],
+		['Gore', 'ui_up'],
+		['Desno', 'ui_right'],
 		[''],
 		['Reset', 'reset'],
 		['Accept', 'accept'],
 		['Back', 'back'],
 		['Pause', 'pause'],
 		[''],
-		['VOLUME'],
-		['Mute', 'volume_mute'],
-		['Up', 'volume_up'],
-		['Down', 'volume_down'],
+		['Jacina Zvuka'],
+		['Iskljuci', 'volume_mute'],
+		['Gore', 'volume_up'],
+		['Dole', 'volume_down'],
 		[''],
 		['DEBUG'],
-		['Key 1', 'debug_1'],
-		['Key 2', 'debug_2']
+		['Strelica 1', 'debug_1'],
+		['Strelica 2', 'debug_2']
 	];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
@@ -112,7 +112,7 @@ class ControlsSubState extends MusicBeatSubstate {
 		changeSelection();
 
 		#if android
-		addVirtualPad(LEFT_FULL, A_B);
+		addVirtualPad(LEFT_FULL, B);
 		addPadCamera();
 		#end
 	}

@@ -31,54 +31,54 @@ class VisualsUISubState extends BaseOptionsMenu
 {
 	public function new()
 	{
-		title = 'Visuals and UI';
+		title = 'Opcije Za Vizulaciju I KI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('Note Splashes',
-			"If unchecked, hitting \"Sick!\" notes won't show particles.",
+		var option:Option = new Option('Prskanja Strelica',
+			"Ako Je Neocekivano, Stiskanjrm \"BOLESNO!\" Strelice Nece Pokazati Prskanja.",
 			'noteSplashes',
 			'bool',
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Hide HUD',
-			'If checked, hides most HUD elements.',
+		var option:Option = new Option('Sakrij HUD',
+			'Ako Je Ocekivano, Sakrije HUD Elemente.',
 			'hideHud',
 			'bool',
 			false);
 		addOption(option);
 		
-		var option:Option = new Option('Time Bar:',
-			"What should the Time Bar display?",
+		var option:Option = new Option('Vremenska Traka:',
+			"Kako Zelis Da Bude Vremesnka Traka?",
 			'timeBarType',
 			'string',
 			'Time Left',
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
-		var option:Option = new Option('Flashing Lights',
-			"Uncheck this if you're sensitive to flashing lights!",
+		var option:Option = new Option('Osvetljenje Ekrana',
+			"Ako Je Neocekivano, Imaces Svetliji Ekran!",
 			'flashing',
 			'bool',
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Camera Zooms',
-			"If unchecked, the camera won't zoom in on a beat hit.",
+		var option:Option = new Option('Zumiranje Kamere',
+			"Ako Je Neocekivano, Kamera Nece Da Zumira Na Pritiskanju.",
 			'camZooms',
 			'bool',
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Score Text Zoom on Hit',
-			"If unchecked, disables the Score text zooming\neverytime you hit a note.",
+		var option:Option = new Option('Zumiranje Teksta Za Poen Na Zumiranju',
+			"Ako Je Neocekivano, Iskljucuje Zumiranje Teksta Za Poen\nSvaki Put Kada Pritisnes Strelicu.",
 			'scoreZoom',
 			'bool',
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Health Bar Transparency',
-			'How much transparent should the health bar and icons be.',
+		var option:Option = new Option('Transpiracija Trake Za Stanje Srca',
+			'Koliko Zelis Da Vidis Traku Za Stanje Srca I Ikonice.',
 			'healthBarAlpha',
 			'percent',
 			1);
@@ -89,16 +89,16 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 1;
 		addOption(option);
 
-		var option:Option = new Option('FPS Counter',
-			'If unchecked, hides FPS Counter.',
+		var option:Option = new Option('BSS Brojac',
+			'Ako Je Neocekivano, Sakrije BSS Brojac.',
 			'showFPS',
 			'bool',
 			#if android false #else true #end);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
 		
-		var option:Option = new Option('Pause Screen Song:',
-			"What song do you prefer for the Pause Screen?",
+		var option:Option = new Option('Muzika Za Ekran-Pauzu:',
+			"Koju Pesmu Zelis Da Ostavis Na Ekran-Pauzu?",
 			'pauseMusic',
 			'string',
 			'Tea Time',
@@ -107,8 +107,8 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.onChange = onChangePauseMusic;
 		
 		#if CHECK_FOR_UPDATES
-		var option:Option = new Option('Check for Updates',
-			'On Release builds, turn this on to check for updates when you start the game.',
+		var option:Option = new Option('Ocekuj Azuriranja',
+			'Na Nova Azuriranja, Ukljuci Ovu Opciju Da Ocekujes Nova Azuriranja.',
 			'checkForUpdates',
 			'bool',
 			true);
