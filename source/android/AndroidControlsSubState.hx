@@ -19,7 +19,7 @@ import openfl.utils.Assets;
 
 class AndroidControlsSubState extends FlxSubState
 {
-	final controlsItems:Array<String> = ['Pad-Right', 'Pad-Left', 'Pad-Custom', 'Pad-Duo', 'Hitbox', 'Keyboard'];
+	final controlsItems:Array<String> = ['Desna-Dugmad', 'Leva-Dugmad', 'Vrsta-Dugmeta', 'Dupla-Dudmad', 'Hitbox', 'Keyboard'];
 	var virtualPad:FlxVirtualPad;
 	var hitbox:FlxHitbox;
 	var upPozition:FlxText;
@@ -43,7 +43,7 @@ class AndroidControlsSubState extends FlxSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		resetButton = new FlxButton(FlxG.width - 200, 50, 'Reset', function()
+		resetButton = new FlxButton(FlxG.width - 200, 50, 'Podesi Opet', function()
 		{
 			if (resetButton.visible)
 			{
@@ -71,7 +71,7 @@ class AndroidControlsSubState extends FlxSubState
 		hitbox.visible = false;
 		add(hitbox);
 
-		funitext = new FlxText(0, 50, 0, 'No Android Controls!', 32);
+		funitext = new FlxText(0, 50, 0, 'Bez Android Kontrola!', 32);
 		funitext.setFormat('VCR OSD Mono', 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		funitext.borderSize = 2.4;
 		funitext.screenCenter();
@@ -98,7 +98,7 @@ class AndroidControlsSubState extends FlxSubState
 		rightArrow.animation.play('idle');
 		add(rightArrow);
 
-		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press BACK on your phone to get back to the options menu', 16);
+		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Pritisni NAZAD Dugme Na Tvom Telefonu.', 16);
 		tipText.setFormat('VCR OSD Mono', 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tipText.borderSize = 2.4;
 		tipText.scrollFactor.set();
@@ -137,7 +137,7 @@ class AndroidControlsSubState extends FlxSubState
 		{
 			AndroidControls.setMode(curSelected);
 
-			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom')
+			if (controlsItems[Math.floor(curSelected)] == 'Vrsta-Dugmeta')
 				AndroidControls.setCustomMode(virtualPad);
 
 			FlxTransitionableState.skipNextTransOut = true;
@@ -157,7 +157,7 @@ class AndroidControlsSubState extends FlxSubState
 			else if (touch.overlaps(rightArrow) && touch.justPressed)
 				changeSelection(1);
 
-			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom')
+			if (controlsItems[Math.floor(curSelected)] == 'Vrsta-Dugmeta')
 			{
 				if (buttonBinded)
 				{
@@ -189,16 +189,16 @@ class AndroidControlsSubState extends FlxSubState
 		if (virtualPad != null)
 		{
 			if (virtualPad.buttonUp != null)
-				upPozition.text = 'Button Up X:' + virtualPad.buttonUp.x + ' Y:' + virtualPad.buttonUp.y;
+				upPozition.text = 'Dugme Gore X:' + virtualPad.buttonUp.x + ' Y:' + virtualPad.buttonUp.y;
 
 			if (virtualPad.buttonDown != null)
-				downPozition.text = 'Button Down X:' + virtualPad.buttonDown.x + ' Y:' + virtualPad.buttonDown.y;
+				downPozition.text = 'Dugme Dole X:' + virtualPad.buttonDown.x + ' Y:' + virtualPad.buttonDown.y;
 
 			if (virtualPad.buttonLeft != null)
-				leftPozition.text = 'Button Left X:' + virtualPad.buttonLeft.x + ' Y:' + virtualPad.buttonLeft.y;
+				leftPozition.text = 'Dugme Levo X:' + virtualPad.buttonLeft.x + ' Y:' + virtualPad.buttonLeft.y;
 
 			if (virtualPad.buttonRight != null)
-				rightPozition.text = 'Button Right x:' + virtualPad.buttonRight.x + ' Y:' + virtualPad.buttonRight.y;
+				rightPozition.text = 'Dugme Desno x:' + virtualPad.buttonRight.x + ' Y:' + virtualPad.buttonRight.y;
 		}
 	}
 
@@ -217,40 +217,40 @@ class AndroidControlsSubState extends FlxSubState
 
 		switch (daChoice)
 		{
-			case 'Pad-Right':
+			case 'Desna-Dugmad':
 				hitbox.visible = false;
 				virtualPad.destroy();
 				virtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
 				add(virtualPad);
-			case 'Pad-Left':
+			case 'Leva-Dugmad':
 				hitbox.visible = false;
 				virtualPad.destroy();
 				virtualPad = new FlxVirtualPad(LEFT_FULL, NONE);
 				add(virtualPad);
-			case 'Pad-Custom':
+			case 'Vrsta-Dugmeta':
 				hitbox.visible = false;
 				virtualPad.destroy();
 				virtualPad = AndroidControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
 				add(virtualPad);
-			case 'Pad-Duo':
+			case 'Dupla-Dudmad':
 				hitbox.visible = false;
 				virtualPad.destroy();
 				virtualPad = new FlxVirtualPad(BOTH_FULL, NONE);
 				add(virtualPad);
-			case 'Hitbox':
+			case 'Hitboks':
 				hitbox.visible = true;
 				virtualPad.visible = false;
-			case 'Keyboard':
+			case 'Tastatura':
 				hitbox.visible = false;
 				virtualPad.visible = false;
 		}
 
-		funitext.visible = daChoice == 'Keyboard';
-		resetButton.visible = daChoice == 'Pad-Custom';
-		upPozition.visible = daChoice == 'Pad-Custom';
-		downPozition.visible = daChoice == 'Pad-Custom';
-		leftPozition.visible = daChoice == 'Pad-Custom';
-		rightPozition.visible = daChoice == 'Pad-Custom';
+		funitext.visible = daChoice == 'Tastatura';
+		resetButton.visible = daChoice == 'Vrsta-Dugmeta';
+		upPozition.visible = daChoice == 'Vrsta-Dugmeta';
+		downPozition.visible = daChoice == 'Vrsta-Dugmeta';
+		leftPozition.visible = daChoice == 'Vrsta-Dugmeta';
+		rightPozition.visible = daChoice == 'Vrsta-Dugmeta';
 	}
 
 	function moveButton(touch:FlxTouch, button:FlxButton):Void
