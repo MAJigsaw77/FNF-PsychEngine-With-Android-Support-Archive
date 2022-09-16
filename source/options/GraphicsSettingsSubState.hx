@@ -54,7 +54,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Shaders', //Name
-			'''Ako Je Neocekivano, Nemate Shadere.\n{Ova Opcija Radi Na Android, Windows, Mac I Linux Podrsku, Ali Pravi Veliki Lag}'.', //Description
+			'''Ako Je Neocekivano, Nemate Shadere.\n{Ova Opcija Radi Na Android, Windows, Mac I Linux Podrsku, Ali Pravi Veliki Lag}', //Description
 			'shaders', //Save data variable name
 			'bool', //Variable type
 			true); //Default value

@@ -447,7 +447,7 @@ class NoteOffsetState extends MusicBeatState
 			{
 				case 0: dumbTexts.members[i].text = 'Sadrzaj Broja: ';
 				case 1: dumbTexts.members[i].text = '[' + ClientPrefs.comboOffset[0] + ', ' + ClientPrefs.comboOffset[1] + ']';
-				case 2: dumbTexts.members[i].text = '''Sadrzaj Ocene: ';
+				case 2: dumbTexts.members[i].text = 'Sadrzaj Ocene: ';
 				case 3: dumbTexts.members[i].text = '[' + ClientPrefs.comboOffset[2] + ', ' + ClientPrefs.comboOffset[3] + ']';
 			}
 		}
