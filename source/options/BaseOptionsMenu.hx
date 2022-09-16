@@ -11,7 +11,6 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.addons.display.FlxBackdrop;
 import lime.utils.Assets;
 import flixel.FlxSubState;
 import flash.text.TextField;
