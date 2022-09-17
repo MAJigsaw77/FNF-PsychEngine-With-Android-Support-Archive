@@ -112,6 +112,7 @@ class SUtil
 	public static function getPath():String
 	{
 		#if android return Environment.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file') + '/'; #else return ''; #end
+	}
 
 	/**
 	 * Uncaught error handler, original made by: sqirra-rng
@@ -137,7 +138,7 @@ class SUtil
 			errMsg += u.error;
 
 			Sys.println(errMsg);
-			Application.current.window.alert(errMsg, 'Error!');
+			Application.current.window.alert(errMsg, 'Greska!');
 
 			try
 			{
@@ -150,7 +151,7 @@ class SUtil
 			}
 			catch (e:Dynamic)
 				#if android
-				Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, 2);
+				Hardware.toast("Greska!\nSB Engine Nemoze Sacuvati Ime Dadoteke Za Gresku Zbog:\n" + e, 2);
 				#end
 
 			System.exit(1);
