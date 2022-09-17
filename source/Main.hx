@@ -119,7 +119,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = SUtil.getPath() + "crash/" + "PsychEngine_" + dateNow + ".txt";
+		path = SUtil.getPath() + "crash/" + "SB Engine_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -132,7 +132,7 @@ class Main extends Sprite
 			}
 		}
 
-		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/jigsaw-4277821/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
+		errMsg += "\nUhvacena Greska: " + e.error + "\nMolim Prijaviti Gresku Na GitHub Sajtu: https://github.com/StefanBETA2008/SB-Engine\n\n> Kod Za Gresku Napisao: sqirra-rng";
 
 		if (!FileSystem.exists(SUtil.getPath() + "crash/"))
 			FileSystem.createDirectory(SUtil.getPath() + "crash/");
@@ -142,7 +142,7 @@ class Main extends Sprite
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
-		Application.current.window.alert(errMsg, "Error!");
+		Application.current.window.alert(errMsg, "Greska: ");
 		#if desktop
 		DiscordClient.shutdown();
 		#end
