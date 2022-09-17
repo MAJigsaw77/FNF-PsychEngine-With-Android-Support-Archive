@@ -41,13 +41,13 @@ class SUtil
 				/**
 				 * Basically for now i can't force the app to stop while its requesting a android permission, so this makes the app to stop while its requesting the specific permission
 				 */
-				Application.current.window.alert('Ako Si Prihvatio Pristup, Ti Si Onda Super!' + "\nDobrodosao Na SB Engine"
-					+ 'Pritisni OK Da Vidis Sledece',
+				Application.current.window.alert('Ako Si Prihvatio Pristup SB Engine Memoriji, Super!' + "\nAko Nisi Dobio Gresku."
+					+ 'Pritisni Dugme OK Da Vidis Sledece.',
 					'Pristup?');
 			}
 			else
 			{
-				Application.current.window.alert('Molim Dati Pristup SB Engine Memoriji.' + '\nPritisni OK Dugme Da Zatvoris SB Engine', 'Pristup?');
+				Application.current.window.alert('Molim Da Se Da Pristup SB Engine Memoriji Na Podesavanja.' + '\nPritisni Dugme OK Da Zatvoris SB Engine.', 'Pristup?');
 				System.exit(1);
 			}
 		}
@@ -60,45 +60,45 @@ class SUtil
 
 			if (!FileSystem.exists(SUtil.getPath() + 'assets') && !FileSystem.exists(SUtil.getPath() + 'mods'))
 			{
-				Application.current.window.alert("Ups, Izgleda Da Nisi Postavio Dve Fascikle Od .apk Formata.\nMolim Pogledati Tutorijal Klikcuci Dugme OK.",
-					'Greska:');
+				Application.current.window.alert("Ups, Izgleda Da Nisi Stavio Fve Fascikle Iz .apk Formata.\nMolim Pogledati Tutorijal Klikcuci Dugme OK.",
+					'Greska!');
 				FlxG.openURL('https://youtu.be/Cm1JE_uBbYk');
 				System.exit(1);
 			}
 			else if ((FileSystem.exists(SUtil.getPath() + 'assets') && !FileSystem.isDirectory(SUtil.getPath() + 'assets'))
 				&& (FileSystem.exists(SUtil.getPath() + 'mods') && !FileSystem.isDirectory(SUtil.getPath() + 'mods')))
 			{
-				Application.current.window.alert("Zasto Si Ti Napravio Dve Fascikle Koje Nemaju Totalno Nista? SB Engine Se Zatvara Automatski...",
-					'Greska:');
+				Application.current.window.alert("Zasto Si Napravio Dve Fascikle Koje Nesadrzi Totalno Nista Bez .apk Formata?, SB Engine Se Zatvara...",
+					'Greska!');
 				System.exit(1);
 			}
 			else
 			{
 				if (!FileSystem.exists(SUtil.getPath() + 'assets'))
 				{
-					Application.current.window.alert("Ups, Izgleda Da Nisi Stavio Jednu Fasciklu Pod Nazivom: "assets" Sa .apk Formata.\nMolim Pogledati Tutorijal Klikcuci Dugme OK.",
-						'Greska:');
+					Application.current.window.alert("Ups, Izgleda Da Nisi Ekstraktao Dadoteku Iz assets/assets Od .apk Formata.\nMolim Pogledati Tutorijal Klikcuci Dugme OK.",
+						'Greska!');
 					FlxG.openURL('https://youtu.be/Cm1JE_uBbYk');
 					System.exit(1);
 				}
 				else if (FileSystem.exists(SUtil.getPath() + 'assets') && !FileSystem.isDirectory(SUtil.getPath() + 'assets'))
 				{
-					Application.current.window.alert("Zasto Si Ti Napravio "assets" Fasciklu Koju Nesadrzi Totalno Nista? SB Engine Se Zatvara Automatski...",
-					        'Greska:');
+					Application.current.window.alert("Zasto Si Napravio Fasciklu Pod Nazivom: assets Bez Koja Nesadrzi Totalno Nista Bez .apk Formata?, SB Engine Se Zatvara...",
+						'Greska!');
 					System.exit(1);
 				}
 
 				if (!FileSystem.exists(SUtil.getPath() + 'mods'))
 				{
-					Application.current.window.alert("Ups, Izgleda Da Nisi Stavio Fasciklu Pod Nazivom: "mods" Iz .apk Formata.\nMolim Pogledati Tutorijal Klikcuci Dugme OK.",
-						'Greska:');
+					Application.current.window.alert("Ups, Izgleda Da Nisi Ekstraktao Dadoteku Iz assets/mods Od .apk Formata.\nMolim Pogledati Tutorijal Klikcuci Dugme OK.",
+						'Greska!');
 					FlxG.openURL('https://youtu.be/Cm1JE_uBbYk');
 					System.exit(1);
 				}
 				else if (FileSystem.exists(SUtil.getPath() + 'mods') && !FileSystem.isDirectory(SUtil.getPath() + 'mods'))
 				{
-					Application.current.window.alert("Zasto Si Ti Napravio "mods" Fasciklu Koju Nesadrzi Totalno Nista? SB Engine Se Zatvara Automatski...",
-						'Greska:');
+					Application.current.window.alert("Zasto Si Napravio Fasciklu Pod Nazivom mods Bez Koja Nesadrzi Totalno Nista Bez .apk Formata?, SB Engine Se Zatvara...",
+						'Greska!');
 					System.exit(1);
 				}
 			}
@@ -112,7 +112,7 @@ class SUtil
 	public static function getPath():String
 	{
 		#if android return Environment.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file') + '/'; #else return ''; #end
-	}
+
 	/**
 	 * Uncaught error handler, original made by: sqirra-rng
 	 */
@@ -137,7 +137,7 @@ class SUtil
 			errMsg += u.error;
 
 			Sys.println(errMsg);
-			Application.current.window.alert(errMsg, 'Greska:');
+			Application.current.window.alert(errMsg, 'Error!');
 
 			try
 			{
@@ -150,7 +150,7 @@ class SUtil
 			}
 			catch (e:Dynamic)
 				#if android
-				Hardware.toast("Greska!\nSB Engine Nemoze Sacuvati Ime Dadoteke Pod Nazivom:\n" + e, 2);
+				Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, 2);
 				#end
 
 			System.exit(1);
@@ -166,10 +166,12 @@ class SUtil
 				FileSystem.createDirectory(SUtil.getPath() + 'saves');
 
 			File.saveContent(SUtil.getPath() + 'saves/' + fileName + fileExtension, fileData);
-			Hardware.toast("Dadoteka Uspesno Sacuvana!", 2);
+			#if android
+			Hardware.toast("Dadoteka Uspesno Sacuvana Na Fascikli: saves.", 2);
+			#end
 		}
 		catch (e:Dynamic)
-			Hardware.toast("Greska:\nSB Engine Nemoze Sacuvati Dadoteku:\n" + e, 2);
+			Hardware.toast("Greska!\nSB Engine Nemoze Sacuvati Ime Dadoteke Za Gresku:\n" + e, 2);
 	}
 
 	public static function copyContent(copyPath:String, savePath:String)
@@ -180,7 +182,7 @@ class SUtil
 				File.saveBytes(savePath, OpenFlAssets.getBytes(copyPath));
 		}
 		catch (e:Dynamic)
-			Hardware.toast("Greska:\nSB Engine Nemoze Kopirati Dadoteku:\n" + e, 2);
+			Hardware.toast("Greska!\nSB Engine Nemoze Da Kopira Ime Dadoteke Za Kopiranje:\n" + e, 2);
 	}
 	#end
 }
