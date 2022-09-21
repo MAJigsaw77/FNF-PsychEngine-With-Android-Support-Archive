@@ -263,7 +263,7 @@ class ModsMenuState extends MusicBeatState
 
 		
 		installButton = new FlxButton(startX, 620, "Install Mod", function()
-		{
+		{installButton
 			installMod();
 		});
 		installButton.setGraphicSize(150, 70);
@@ -310,7 +310,7 @@ class ModsMenuState extends MusicBeatState
 		removeButton.label.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER);
 		setAllLabelsOffset(removeButton, 2, 15);
 		add(removeButton);
-		visibleWhenHasMods.push(removeButton);*/
+		visibleWhenHasMods.push(removeButton);
 
 		
 		descriptionTxt = new FlxText(148, 0, FlxG.width - 216, "", 32);
