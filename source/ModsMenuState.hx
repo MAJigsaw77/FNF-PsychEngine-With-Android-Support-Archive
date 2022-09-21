@@ -30,10 +30,10 @@ import flixel.ui.FlxButton;
 #end
 import flixel.FlxBasic;
 import sys.io.File;
-/*import haxe.zip.Reader;
+import haxe.zip.Reader;
 import haxe.zip.Entry;
 import haxe.zip.Uncompress;
-import haxe.zip.Writer;*/
+import haxe.zip.Writer;
 
 using StringTools;
 
@@ -261,9 +261,9 @@ class ModsMenuState extends MusicBeatState
 
 
 
-		/*
+		
 		installButton = new FlxButton(startX, 620, "Install Mod", function()
-		{
+		{installButton
 			installMod();
 		});
 		installButton.setGraphicSize(150, 70);
@@ -310,9 +310,9 @@ class ModsMenuState extends MusicBeatState
 		removeButton.label.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER);
 		setAllLabelsOffset(removeButton, 2, 15);
 		add(removeButton);
-		visibleWhenHasMods.push(removeButton);*/
+		visibleWhenHasMods.push(removeButton);
 
-		///////
+		
 		descriptionTxt = new FlxText(148, 0, FlxG.width - 216, "", 32);
 		descriptionTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT);
 		descriptionTxt.scrollFactor.set();
