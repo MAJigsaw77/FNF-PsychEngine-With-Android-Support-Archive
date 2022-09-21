@@ -30,10 +30,10 @@ import flixel.ui.FlxButton;
 #end
 import flixel.FlxBasic;
 import sys.io.File;
-/*import haxe.zip.Reader;
+import haxe.zip.Reader;
 import haxe.zip.Entry;
 import haxe.zip.Uncompress;
-import haxe.zip.Writer;*/
+import haxe.zip.Writer;
 
 using StringTools;
 
