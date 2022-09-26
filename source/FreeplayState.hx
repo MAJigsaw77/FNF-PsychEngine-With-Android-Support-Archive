@@ -353,7 +353,6 @@ class FreeplayState extends MusicBeatState
 			persistentUpdate = false;
 			openSubState(new GameplayChangersSubstate());
 		}
-		else if(space)
 		{
 			if(instPlaying != curSelected)
 			{
@@ -370,7 +369,7 @@ class FreeplayState extends MusicBeatState
 
 				FlxG.sound.list.add(vocals);
 				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
-				vocals.play();
+				vocals.stop();
 				vocals.persist = true;
 				vocals.looped = true;
 				vocals.volume = 0.7;
@@ -500,7 +499,7 @@ class FreeplayState extends MusicBeatState
 			item.targetY = bullShit - curSelected;
 			bullShit++;
 
-			item.alpha = 0.6;
+			item.alpha = 0;
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
 			if (item.targetY == 0)
